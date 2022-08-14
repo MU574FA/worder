@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='daisyui.css') }}" />
+    <title>Wordle</title>
+  </head>
+  <body class="text-center">
+    <!-- result -->
+    <div class="container text-center" id="results"></div>
+
+    <div class="container justify-center text-center" id="blanks"></div>
+
+    <!-- inputs conatiner  -->
+    <div class="container justify-center text-center">
+      <!-- user input -->
+      <input id="user-input" type="text" class="btn w-48" placeholder="Guess..." minlength="5" maxlength="5" />
+      <!-- submit button -->
+      <input type="button" class="btn btn-success btn-active my-1" onclick="main()" value=">" />
+      <!-- messgae -->
+      <br />
+      <input id="msg" type="button" class="btn btn-warning btn-active my-2 w-56" value="" />
+      <br />
+      <!-- game reload -->
+      <input id="reload-game" type="button" class="btn btn-error w-56 btn-active" onclick="window.location.reload()" value="Reload the game" />
+      <!-- :/ stop inspecting you weirdo -->
+      <input type="hidden" id="word" value="{{word}}" />
+      <input type="hidden" id="words" value="{{words}}" />
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='tailwind.js') }}"></script>
+  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='wordle.js') }}"></script>
+</html>

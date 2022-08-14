@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='daisyui.css') }}" />
+    <input type="hidden" id="apiLink" value="{{apiLink}}" />
+    <title>Worder</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <li class="btn btn-info m-1" onclick="help()">Help?</li>
+      <a herf="/wordslist"><li class="btn btn-info m-1">Words List</li></a>
+      <a href="https://github.com/MU574FA/worder.git"><li class="btn btn-info m-1">Source Code</li></a>
+    </div>
+      <ol id="help" class="p-3" style="display: none;">
+        
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">Starts with: </span> gets you all words that starts with the supplied text<br>
+        E.G. 'CA' => CAT, CAR, CAP, CAN, etc...
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">X-Starts: </span> gets you all words that not starting with the supplied text<br>
+        E.G. 'CA' => all but words that starts with 'CA'
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">Ends with: </span> gets you all words that ends with the supplied text<br>
+        E.G. 'AT' => RAT, FAT, CAT, HAT, etc...
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">X-Ends: </span> gets you all words that not ending with the supplied text<br>
+        E.G. 'AT' => all but words that ends with 'AT'
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">Includes: </span> gets you all words that includes the supplied LETTERS<br>
+        E.G. 'XD' => all words that has the letters 'X' & 'D'
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">Excludes: </span> gets you all words that excludes the supplied LETTERS<br>
+        E.G. 'XD' => all words that does not has the letters 'X' & 'D'
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">Wildcard: </span> gets you all words that matchs the given wildcard<br>
+        E.G. 'C?T' => CUT, CAT, etc... *Note, length of the wildcard to be considered. 
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-accent">X-Wildcard: </span> gets you all words BUT that matchs the given wildcard<br>
+        E.G. 'C?T' => all words that does not starts with 'C' and ends with 'T'. *Note, length of the wildcard to be considered.
+        </li>
+
+        <li class="card p-3 bg-gray-200 my-1"><span class="text-secondary">Note: </span>The result coming back from the server gets a maximum of 99-100 words only</li>
+      </ol>
+    </p>
+    <div class="container content-center text-center flex-wrap">
+      <h1 class="stat-value text-accent my-5" onclick="easter()">Worder</h1>
+      <input name="length" type="text" class="btn mt-3 w-9/12" placeholder="Length" autocomplete="off" />
+      <input name="starts" type="text" class="btn mt-2 w-4/12" placeholder="Starts With" autocomplete="off" />
+      <input name="xstarts" type="text" class="btn mt-2 w-4/12" placeholder="X-Starts" autocomplete="off" />
+      <input name="ends" type="text" class="btn mt-2 w-4/12" placeholder="Ends With" autocomplete="off" />
+      <input name="xends" type="text" class="btn mt-2 w-4/12" placeholder="X-Ends" autocomplete="off" />
+      <input name="includes" type="text" class="btn mt-2 w-4/12" placeholder="Includes" autocomplete="off" />
+      <input name="excludes" type="text" class="btn mt-2 w-4/12" placeholder="Excludes" autocomplete="off" />
+      <input name="wildcard" type="text" class="btn mt-2 w-9/12" placeholder="Wildcard C?T" autocomplete="off" />
+      <input name="xwildcard" type="text" class="btn mt-2 w-9/12" placeholder="X-Wildcard ??T" autocomplete="off" />
+      <input type="button" name="find" onclick="getWords()" value="Find" class="btn btn-accent btn-active mt-2 w-9/12" />
+      <input type="button" name="clear" onclick="clearAll()" value="Clear All" class="btn btn-error btn-active mt-2 w-9/12 invisible" />
+    </div>
+    <div class="container p-2 footer-center" id="words"></div>
+  </body>
+  <script src="{{ url_for('static', filename='tailwind.js') }}"></script>
+  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</html>
