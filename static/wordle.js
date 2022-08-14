@@ -94,7 +94,7 @@ function main() {
 
   // get user input
   var userGuess = $("#user-input").val();
-  // $("#user-input").val("");
+  $("#user-input").val("");
   var check = wordle.check(userGuess);
 
   // win
