@@ -32,7 +32,7 @@ class Worder():
     
     @property
     def __words(self):
-        with open(f"{wordsFilePath}") as f:
+        with open(f"{wordsFilePath}", encoding="utf-8") as f:
             return (i.strip().upper().split(" ")[0] for i in f.readlines() if i.strip().split(" ")[0])
 
 
